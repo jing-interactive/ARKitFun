@@ -5,7 +5,11 @@
 #include "cinder/Log.h"
 
 #include "AssetManager.h"
-#include "MiniConfig.h"
+#include "MiniConfigImgui.h"
+
+#ifdef CINDER_COCOA_TOUCH
+#include "CinderARKit.h"
+#endif
 
 using namespace ci;
 using namespace ci::app;
@@ -22,7 +26,8 @@ class MiniARApp : public App
         mCam.lookAt(aabb.getMax() * 2.0f, aabb.getCenter());
         mCamUi = CameraUi( &mCam, getWindow(), -1 );
         
-        createConfigUI({200, 200});
+//        createConfigUI({200, 200});
+        createConfigImgui();
         gl::enableDepth();
 
         getWindow()->getSignalResize().connect([&] {
