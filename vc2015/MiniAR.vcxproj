@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
@@ -13,6 +14,7 @@
     <ProjectGuid>{C3552B10-C7A7-49E6-B971-161DFE1F3D85}</ProjectGuid>
     <RootNamespace>MiniAR</RootNamespace>
     <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -41,6 +43,13 @@
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)..\bin\</OutDir>
+    <TargetName>$(ProjectName)-d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)..\bin\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -133,7 +142,6 @@
     <ClCompile Include="..\..\Cinder\blocks\Cinder-ImGui\lib\imgui\imgui.cpp" />
     <ClCompile Include="..\..\Cinder\blocks\Cinder-ImGui\lib\imgui\imgui_draw.cpp" />
     <ClCompile Include="..\..\Cinder\blocks\Cinder-ImGui\lib\imgui\imgui_demo.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-ImGui\lib\ImGuizmo\ImGuizmo.cpp" />
     <ClCompile Include="..\..\Cinder\blocks\Cinder-Nodes\src\Node.cpp" />
     <ClCompile Include="..\..\Cinder\blocks\Cinder-Nodes\src\Node2D.cpp" />
     <ClCompile Include="..\..\Cinder\blocks\Cinder-Nodes\src\Node3D.cpp" />
