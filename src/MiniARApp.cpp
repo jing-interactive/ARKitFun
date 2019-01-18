@@ -14,6 +14,16 @@ using namespace ci;
 using namespace ci::app;
 using namespace std;
 
+#if defined( CINDER_GL_ES )
+namespace cinder {
+    namespace gl {
+        void enableWireframe() {}
+        void disableWireframe() {}
+        void setWireframeEnabled(bool enable = true) { if (enable) enableWireframe(); else disableWireframe(); }
+    }
+}
+#endif
+
 class MiniARApp : public App
 {
   public:
