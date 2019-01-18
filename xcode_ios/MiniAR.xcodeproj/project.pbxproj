@@ -25,6 +25,7 @@
 		65B79556C6BC4B7AA3979DA9 /* NodeRectangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0700105B1AC94BE2A178CA4F /* NodeRectangle.cpp */; };
 		716E0F1FAE524C2EBA6F4DFC /* imgui_demo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F49AC968FCCE4A2A83C83748 /* imgui_demo.cpp */; };
 		72454280AA424A1B89BD9698 /* CinderApp_ios.png in Resources */ = {isa = PBXBuildFile; fileRef = C7F3DB3D1839431495778437 /* CinderApp_ios.png */; };
+		749CEAAD21F23443008C8AA2 /* imgui_widgets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 749CEAAC21F23443008C8AA2 /* imgui_widgets.cpp */; };
 		80441F7023DC4296B63723B5 /* ARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46934FE7C8B242AABC19160D /* ARKit.framework */; };
 		8D16F2F5BF524C2FAC25EE0A /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 732582F2B50E4864A6014AAA /* Node.cpp */; };
 		9D83E6D7A5624AC0A3A3BF6C /* Node2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C4902A777158496CA239EE29 /* Node2D.cpp */; };
@@ -35,7 +36,6 @@
 		C727C02E121B400300192073 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C727C02D121B400300192073 /* CoreVideo.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		C7FB19D6124BC0D70045AFD2 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7FB19D5124BC0D70045AFD2 /* AudioToolbox.framework */; };
 		D3CD25AEFE044583A721AF5D /* MiniARApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1816FC322A141EEBA1CB8DC /* MiniARApp.cpp */; };
-		D56E5E130B1E42DC8F47F2F6 /* ImGuizmo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5C03B3931F8943B09DAFD628 /* ImGuizmo.cpp */; };
 		DB956720AF3344518865109B /* Node3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0AE5CC5171D74E49B0A99118 /* Node3D.cpp */; };
 		DDDDE001121DAC8FFFFADDDD /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDDDF6A1138442D0091DDDD /* MobileCoreServices.framework */; };
 		FC3CF3E6F50A41C1B6293007 /* imgui_draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C42CFAE3518645F781FBB6E1 /* imgui_draw.cpp */; };
@@ -67,12 +67,12 @@
 		477BA9B878474B4E98EFE4EE /* GlslParamsBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GlslParamsBuilder.h; path = "../../Cinder/blocks/Cinder-VNM/include/GlslParamsBuilder.h"; sourceTree = "<group>"; };
 		4A19702711894451857D3BF4 /* CaptureHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CaptureHelper.h; path = "../../Cinder/blocks/Cinder-VNM/include/CaptureHelper.h"; sourceTree = "<group>"; };
 		4DB477A0A4E341E495751FB9 /* ARSessionImpl.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = ARSessionImpl.mm; path = "../../Cinder/blocks/Cinder-ARKit/src/ARSessionImpl.mm"; sourceTree = "<group>"; };
-		5C03B3931F8943B09DAFD628 /* ImGuizmo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = ImGuizmo.cpp; path = "../../Cinder/blocks/Cinder-ImGui/lib/ImGuizmo/ImGuizmo.cpp"; sourceTree = "<group>"; };
 		615E1966BF794CC88751E44B /* Node2D.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Node2D.h; path = "../../Cinder/blocks/Cinder-Nodes/include/Node2D.h"; sourceTree = "<group>"; };
 		626DF800714F41BFBFF59873 /* ARSessionImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ARSessionImpl.h; path = "../../Cinder/blocks/Cinder-ARKit/include/ARSessionImpl.h"; sourceTree = "<group>"; };
 		69BB6045FA094C4B9C5AAE2C /* CinderImGui.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CinderImGui.h; path = "../../Cinder/blocks/Cinder-ImGui/include/CinderImGui.h"; sourceTree = "<group>"; };
 		6DC7884335EE47AE963415DD /* CinderARKitUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CinderARKitUtils.h; path = "../../Cinder/blocks/Cinder-ARKit/include/CinderARKitUtils.h"; sourceTree = "<group>"; };
 		732582F2B50E4864A6014AAA /* Node.cpp */ = {isa = PBXFileReference; explicitFileType = "\"\""; lastKnownFileType = sourcecode.cpp.cpp; name = Node.cpp; path = "../../Cinder/blocks/Cinder-Nodes/src/Node.cpp"; sourceTree = "<group>"; };
+		749CEAAC21F23443008C8AA2 /* imgui_widgets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_widgets.cpp; path = "../../Cinder/blocks/Cinder-ImGui/lib/imgui/imgui_widgets.cpp"; sourceTree = "<group>"; };
 		7581E76572FF4391984F2296 /* imgui.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = imgui.h; path = "../../Cinder/blocks/Cinder-ImGui/lib/imgui/imgui.h"; sourceTree = "<group>"; };
 		76C7FDC734014627A32183B9 /* Node.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Node.h; path = "../../Cinder/blocks/Cinder-Nodes/include/Node.h"; sourceTree = "<group>"; };
 		7CFF4A758E6346AA8F2990AF /* TextureHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TextureHelper.h; path = "../../Cinder/blocks/Cinder-VNM/include/TextureHelper.h"; sourceTree = "<group>"; };
@@ -217,6 +217,7 @@
 				7581E76572FF4391984F2296 /* imgui.h */,
 				9A594D2C6DA547CF9396A4BC /* imgui_internal.h */,
 				BA9AA40BCECF4874AFC417DD /* imgui.cpp */,
+				749CEAAC21F23443008C8AA2 /* imgui_widgets.cpp */,
 				C42CFAE3518645F781FBB6E1 /* imgui_draw.cpp */,
 				F49AC968FCCE4A2A83C83748 /* imgui_demo.cpp */,
 			);
@@ -334,14 +335,6 @@
 			name = src;
 			sourceTree = "<group>";
 		};
-		B406F65A18934A5F8EDA7BE9 /* ImGuizmo */ = {
-			isa = PBXGroup;
-			children = (
-				5C03B3931F8943B09DAFD628 /* ImGuizmo.cpp */,
-			);
-			name = ImGuizmo;
-			sourceTree = "<group>";
-		};
 		C3759634DC4A4D1BA8E0C07D /* src */ = {
 			isa = PBXGroup;
 			children = (
@@ -366,7 +359,6 @@
 			isa = PBXGroup;
 			children = (
 				1C47FFD2C72E47FD983B69F5 /* imgui */,
-				B406F65A18934A5F8EDA7BE9 /* ImGuizmo */,
 			);
 			name = lib;
 			sourceTree = "<group>";
@@ -448,13 +440,13 @@
 				A382D7C1E76845DCBE57E90F /* imgui.cpp in Sources */,
 				FC3CF3E6F50A41C1B6293007 /* imgui_draw.cpp in Sources */,
 				716E0F1FAE524C2EBA6F4DFC /* imgui_demo.cpp in Sources */,
-				D56E5E130B1E42DC8F47F2F6 /* ImGuizmo.cpp in Sources */,
 				8D16F2F5BF524C2FAC25EE0A /* Node.cpp in Sources */,
 				9D83E6D7A5624AC0A3A3BF6C /* Node2D.cpp in Sources */,
 				DB956720AF3344518865109B /* Node3D.cpp in Sources */,
 				65B79556C6BC4B7AA3979DA9 /* NodeRectangle.cpp in Sources */,
 				3D6219AAC89E4C28BAC17E7E /* AssetManager.cpp in Sources */,
 				044B91F7D5834DC193BCC68A /* MiniConfig.cpp in Sources */,
+				749CEAAD21F23443008C8AA2 /* imgui_widgets.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
