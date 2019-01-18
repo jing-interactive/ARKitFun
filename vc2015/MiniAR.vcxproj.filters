@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source Files">
@@ -30,9 +31,6 @@
     <Filter Include="Blocks\ImGui\src">
       <UniqueIdentifier>{2D481493-0470-4667-95E0-51BD834190F3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Blocks\ImGui\lib\ImGuizmo">
-      <UniqueIdentifier>{E0F081DD-5DDD-4ADA-A6A0-E48C5CCB778B}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Blocks\Nodes">
       <UniqueIdentifier>{4C602174-1111-44CA-A508-0B627D50E060}</UniqueIdentifier>
     </Filter>
@@ -50,6 +48,9 @@
     </Filter>
     <Filter Include="Blocks\vnm\include">
       <UniqueIdentifier>{319EA058-94C3-4596-8498-519EB06DF527}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\MeshViewer">
+      <UniqueIdentifier>{6f52d3b2-13f1-4e94-a9c5-22e36c264906}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -88,9 +89,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Cinder\blocks\Cinder-ImGui\lib\imgui\imgui_demo.cpp">
       <Filter>Blocks\ImGui\lib\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-ImGui\lib\ImGuizmo\ImGuizmo.cpp">
-      <Filter>Blocks\ImGui\lib\ImGuizmo</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Cinder\blocks\Cinder-Nodes\src\Node.cpp">
       <Filter>Blocks\Nodes\src</Filter>
@@ -167,10 +165,58 @@
     <ClInclude Include="..\..\Cinder\blocks\Cinder-VNM\include\TuioHelper.h">
       <Filter>Blocks\vnm\include</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-MeshViewer\include\read_vox.cpp">
+      <Filter>Blocks\MeshViewer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-MeshViewer\include\syoyo\tiny_gltf.cc">
+      <Filter>Blocks\MeshViewer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-MeshViewer\include\syoyo\tiny_obj_loader.cc">
+      <Filter>Blocks\MeshViewer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-MeshViewer\src\cigltf.cpp">
+      <Filter>Blocks\MeshViewer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-MeshViewer\src\ciobj.cpp">
+      <Filter>Blocks\MeshViewer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-ImGui\lib\imgui\imgui_widgets.cpp">
+      <Filter>Blocks\ImGui\lib\imgui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Resources.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-MeshViewer\include\cigltf.h">
+      <Filter>Blocks\MeshViewer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-MeshViewer\include\CinderMeshViewer.h">
+      <Filter>Blocks\MeshViewer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-MeshViewer\include\ciobj.h">
+      <Filter>Blocks\MeshViewer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-MeshViewer\include\civox.h">
+      <Filter>Blocks\MeshViewer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-MeshViewer\include\read_vox.h">
+      <Filter>Blocks\MeshViewer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-MeshViewer\include\syoyo\json.hpp">
+      <Filter>Blocks\MeshViewer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-MeshViewer\include\syoyo\stb_image.h">
+      <Filter>Blocks\MeshViewer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-MeshViewer\include\syoyo\stb_image_write.h">
+      <Filter>Blocks\MeshViewer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-MeshViewer\include\syoyo\tiny_gltf.h">
+      <Filter>Blocks\MeshViewer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-MeshViewer\include\syoyo\tiny_obj_loader.h">
+      <Filter>Blocks\MeshViewer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

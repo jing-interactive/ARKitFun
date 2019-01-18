@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
@@ -101,6 +102,16 @@
   <ItemGroup />
   <ItemGroup />
   <ItemGroup>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-MeshViewer\include\cigltf.h" />
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-MeshViewer\include\CinderMeshViewer.h" />
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-MeshViewer\include\ciobj.h" />
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-MeshViewer\include\civox.h" />
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-MeshViewer\include\read_vox.h" />
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-MeshViewer\include\syoyo\json.hpp" />
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-MeshViewer\include\syoyo\stb_image.h" />
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-MeshViewer\include\syoyo\stb_image_write.h" />
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-MeshViewer\include\syoyo\tiny_gltf.h" />
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-MeshViewer\include\syoyo\tiny_obj_loader.h" />
     <ClInclude Include="..\include\Resources.h" />
     <ClInclude Include="..\include\item.def" />
     <ClInclude Include="..\..\Cinder\blocks\Cinder-ImGui\include\CinderImGui.h" />
@@ -128,12 +139,17 @@
     <ClInclude Include="..\..\Cinder\blocks\Cinder-VNM\include\TuioHelper.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-ImGui\lib\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-MeshViewer\include\read_vox.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-MeshViewer\include\syoyo\tiny_gltf.cc" />
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-MeshViewer\include\syoyo\tiny_obj_loader.cc" />
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-MeshViewer\src\cigltf.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-MeshViewer\src\ciobj.cpp" />
     <ClCompile Include="..\src\MiniARApp.cpp" />
     <ClCompile Include="..\..\Cinder\blocks\Cinder-ImGui\src\CinderImGui.cpp" />
     <ClCompile Include="..\..\Cinder\blocks\Cinder-ImGui\lib\imgui\imgui.cpp" />
     <ClCompile Include="..\..\Cinder\blocks\Cinder-ImGui\lib\imgui\imgui_draw.cpp" />
     <ClCompile Include="..\..\Cinder\blocks\Cinder-ImGui\lib\imgui\imgui_demo.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-ImGui\lib\ImGuizmo\ImGuizmo.cpp" />
     <ClCompile Include="..\..\Cinder\blocks\Cinder-Nodes\src\Node.cpp" />
     <ClCompile Include="..\..\Cinder\blocks\Cinder-Nodes\src\Node2D.cpp" />
     <ClCompile Include="..\..\Cinder\blocks\Cinder-Nodes\src\Node3D.cpp" />
