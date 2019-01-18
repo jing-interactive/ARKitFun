@@ -92,7 +92,7 @@ class MiniARApp : public App
                 {
                     gl::setWireframeEnabled(WIRE_FRAME);
                     mRootGLTF->currentScene->setScale(MESH_SCALE);
-                    //mRootGLTF->currentScene->setRotation(mMeshRotation);
+                    mRootGLTF->currentScene->setRotation(mMeshRotation);
                     mRootGLTF->draw();
                     gl::disableWireframe();
                 }
@@ -120,6 +120,7 @@ private:
 
     RootGLTFRef mRootGLTF;
     RootObjRef mRootObj;
+    quat mMeshRotation;
 };
 
 CINDER_APP( MiniARApp, RendererGl, [](App::Settings* settings) {
