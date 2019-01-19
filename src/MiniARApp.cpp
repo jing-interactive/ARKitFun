@@ -14,14 +14,22 @@ using namespace ci;
 using namespace ci::app;
 using namespace std;
 
-#if defined( CINDER_GL_ES )
-namespace cinder {
-    namespace gl {
-        void enableWireframe() {}
-        void disableWireframe() {}
-        void setWireframeEnabled(bool enable = true) { if (enable) enableWireframe(); else disableWireframe(); }
-    }
+#if defined(CINDER_GL_ES)
+namespace cinder
+{
+namespace gl
+{
+void enableWireframe() {}
+void disableWireframe() {}
+void setWireframeEnabled(bool enable = true)
+{
+    if (enable)
+        enableWireframe();
+    else
+        disableWireframe();
 }
+} // namespace gl
+} // namespace cinder
 #endif
 
 struct MiniARApp : public App
@@ -34,8 +42,8 @@ struct MiniARApp : public App
         mCamUi = CameraUi(&ARKit::mCam, getWindow(), -1);
 #endif
         auto config = ARKit::SessionConfiguration()
-            .trackingType(ARKit::TrackingType::WorldTracking)
-            .planeDetection(ARKit::PlaneDetection::Horizontal);
+                          .trackingType(ARKit::TrackingType::WorldTracking)
+                          .planeDetection(ARKit::PlaneDetection::Horizontal);
 
         mARSession.runConfiguration(config);
 
@@ -53,11 +61,12 @@ struct MiniARApp : public App
 #endif
         });
 
-        getWindow()->getSignalMouseUp().connect([&](MouseEvent& event) {
+        getWindow()->getSignalMouseUp().connect([&](MouseEvent &event) {
             mARSession.addAnchorRelativeToCamera(vec3(0.0f, 0.0f, -0.5f));
         });
-        getWindow()->getSignalKeyUp().connect([&](KeyEvent& event) {
-            if (event.getCode() == KeyEvent::KEY_ESCAPE) quit();
+        getWindow()->getSignalKeyUp().connect([&](KeyEvent &event) {
+            if (event.getCode() == KeyEvent::KEY_ESCAPE)
+                quit();
         });
 
         getSignalUpdate().connect([&] {
@@ -74,7 +83,6 @@ struct MiniARApp : public App
         });
 
         getWindow()->getSignalDraw().connect([&] {
-
             gl::clear(Color(0, 0, 0));
 
             {
@@ -87,7 +95,7 @@ struct MiniARApp : public App
             gl::setViewMatrix(mARSession.getViewMatrix());
             gl::setProjectionMatrix(mARSession.getProjectionMatrix());
 
-            for (const auto& a : mARSession.getAnchors())
+            for (const auto &a : mARSession.getAnchors())
             {
 #if 0
                 gl::ScopedMatrices matScp;
@@ -99,44 +107,63 @@ struct MiniARApp : public App
 #else
                 if (mRootGLTF)
                 {
-                    gl::setWireframeEnabled(WIRE_FRAME);
                     MESH_SCALE = 0.001f;
                     mat4 transform = a.mTransform;
                     transform *= glm::scale(vec3(MESH_SCALE, MESH_SCALE, MESH_SCALE));
-//                    transform *= glm::toMat4(mMeshRotation);
+                    //                    transform *= glm::toMat4(mMeshRotation);
                     mRootGLTF->currentScene->setTransform(transform);
                     mRootGLTF->draw();
-                    if (WIRE_FRAME)
-                        gl::disableWireframe();
                 }
 #endif
-        }
+            }
 
-            for (const auto& a : mARSession.getPlaneAnchors())
+            int idx = 0;
+            for (const auto &a : mARSession.getPlaneAnchors())
             {
                 gl::ScopedGlslProg glslProg(am::glslProg("color"));
                 gl::ScopedMatrices matScp;
-                gl::setModelMatrix(a.mTransform);
-                gl::translate(a.mCenter);
-                gl::rotate((float)M_PI * 0.5f, vec3(1, 0, 0)); // Make it parallel with the ground
-                const float xRad = a.mExtent.x * 0.5f;
-                const float zRad = a.mExtent.z * 0.5f;
-                gl::color(0.0f, 0.6f, 0.9f, 0.2f);
-                gl::drawSolidRect(Rectf(-xRad, -zRad, xRad, zRad));
-            }
-    });
-}
 
-    CameraUi            mCamUi;
-    gl::GlslProgRef     mGlslProg;
-    ARKit::Session      mARSession;
+                if (idx == 0)
+                {
+                    if (mRootGLTF)
+                    {
+                        MESH_SCALE = 0.001f;
+                        mat4 transform = a.mTransform;
+                        transform *= glm::translate(a.mCenter);
+                        //transform *= glm::toMat4(mMeshRotation);
+                        //transform *= glm::toMat4((float)M_PI * 0.5f, vec3(1, 0, 0));
+                        transform *= glm::scale(vec3(MESH_SCALE, MESH_SCALE, MESH_SCALE));
+                        mRootGLTF->currentScene->setTransform(transform);
+                        mRootGLTF->draw();
+                    }
+                }
+                else
+                {
+                    gl::setModelMatrix(a.mTransform);
+                    gl::translate(a.mCenter);
+                    gl::rotate((float)M_PI * 0.5f, vec3(1, 0, 0)); // Make it parallel with the ground
+
+                    const float xRad = a.mExtent.x * 0.5f;
+                    const float zRad = a.mExtent.z * 0.5f;
+                    gl::color(0.0f, 0.6f, 0.9f, 0.2f);
+                    gl::drawSolidRect(Rectf(-xRad, -zRad, xRad, zRad));
+                }
+
+                idx++;
+            }
+        });
+    }
+
+    CameraUi mCamUi;
+    gl::GlslProgRef mGlslProg;
+    ARKit::Session mARSession;
 
     RootGLTFRef mRootGLTF;
     RootObjRef mRootObj;
     quat mMeshRotation;
 };
 
-CINDER_APP(MiniARApp, RendererGl, [](App::Settings* settings) {
+CINDER_APP(MiniARApp, RendererGl, [](App::Settings *settings) {
     readConfig();
     settings->setWindowSize(APP_WIDTH, APP_HEIGHT);
     settings->setMultiTouchEnabled(false);
