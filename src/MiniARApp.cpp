@@ -24,21 +24,14 @@ namespace cinder {
 }
 #endif
 
-class MiniARApp : public App
+struct MiniARApp : public App
 {
-  public:
-
-      void touchesBegan(TouchEvent event) override
-      {
-          mARSession.addAnchorRelativeToCamera(vec3(0.0f, 0.0f, 0.0f));
-      }
-
-    void setup() override
+    void setup()
     {
         log::makeLogger<log::LoggerFile>();
- 
+
 #ifndef CINDER_COCOA_TOUCH
-        mCamUi = CameraUi( &ARKit::mCam, getWindow(), -1 );
+        mCamUi = CameraUi(&ARKit::mCam, getWindow(), -1);
 #endif
         auto config = ARKit::SessionConfiguration()
             .trackingType(ARKit::TrackingType::WorldTracking)
@@ -48,22 +41,25 @@ class MiniARApp : public App
 
         mRootGLTF = RootGLTF::create(getAssetPath(MESH_NAME));
 
-//        createConfigUI({200, 200});
+        //        createConfigUI({200, 200});
         createConfigImgui();
-//        gl::enableDepth();
+        gl::enableDepth();
 
         getWindow()->getSignalResize().connect([&] {
             APP_WIDTH = getWindowWidth();
             APP_HEIGHT = getWindowHeight();
 #ifndef CINDER_COCOA_TOUCH
-            ARKit::mCam.setAspectRatio( getWindowAspectRatio() );
+            ARKit::mCam.setAspectRatio(getWindowAspectRatio());
 #endif
         });
 
+        getWindow()->getSignalMouseUp().connect([&](MouseEvent& event) {
+            mARSession.addAnchorRelativeToCamera(vec3(0.0f, 0.0f, 0.0f));
+        });
         getWindow()->getSignalKeyUp().connect([&](KeyEvent& event) {
             if (event.getCode() == KeyEvent::KEY_ESCAPE) quit();
         });
-        
+
         getSignalUpdate().connect([&] {
             if (mRootGLTF)
             {
@@ -79,8 +75,11 @@ class MiniARApp : public App
 
             gl::clear(Color(0, 0, 0));
 
-            gl::color(1.0f, 1.0f, 1.0f, 1.0f);
-            mARSession.drawRGBCaptureTexture(getWindowBounds());
+            {
+                gl::ScopedDepthWrite zWrite(false);
+                gl::color(1.0f, 1.0f, 1.0f, 1.0f);
+                mARSession.drawRGBCaptureTexture(getWindowBounds());
+            }
 
             gl::ScopedMatrices matScp;
             gl::setViewMatrix(mARSession.getViewMatrix());
@@ -100,14 +99,14 @@ class MiniARApp : public App
                 {
                     gl::setWireframeEnabled(WIRE_FRAME);
                     mRootGLTF->currentScene->setTransform(a.mTransform);
-//                    mRootGLTF->currentScene->setScale(MESH_SCALE);
-//                    mRootGLTF->currentScene->setRotation(mMeshRotation);
+                    //                    mRootGLTF->currentScene->setScale(MESH_SCALE);
+                    //                    mRootGLTF->currentScene->setRotation(mMeshRotation);
                     mRootGLTF->draw();
                     if (WIRE_FRAME)
                         gl::disableWireframe();
                 }
 #endif
-            }
+        }
 
             for (const auto& a : mARSession.getPlaneAnchors())
             {
@@ -121,10 +120,9 @@ class MiniARApp : public App
                 gl::color(0.0f, 0.6f, 0.9f, 0.2f);
                 gl::drawSolidRect(Rectf(-xRad, -zRad, xRad, zRad));
             }
-        });
-    }
-    
-private:
+    });
+}
+
     CameraUi            mCamUi;
     gl::GlslProgRef     mGlslProg;
     ARKit::Session      mARSession;
@@ -134,10 +132,8 @@ private:
     quat mMeshRotation;
 };
 
-CINDER_APP( MiniARApp, RendererGl, [](App::Settings* settings) {
+CINDER_APP(MiniARApp, RendererGl, [](App::Settings* settings) {
     readConfig();
-#ifndef CINDER_COCOA_TOUCH
     settings->setWindowSize(APP_WIDTH, APP_HEIGHT);
     settings->setMultiTouchEnabled(false);
-#endif
-} )
+})
