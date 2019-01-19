@@ -68,7 +68,7 @@ class MiniARApp : public App
             if (mRootGLTF)
             {
                 mRootGLTF->flipV = FLIP_V;
-#if 0
+#ifndef CINDER_COCOA_TOUCH
                 mRootGLTF->cameraPosition = ARKit::mCam.getEyePoint();
 #endif
                 mRootGLTF->update();
