@@ -65,7 +65,9 @@ struct MiniARApp : public App
             {
                 mRootGLTF->flipV = FLIP_V;
 #ifndef CINDER_COCOA_TOUCH
-                mRootGLTF->cameraPosition = ARKit::mCam.getEyePoint();
+                // TODO: fix light dir
+                auto viewMat = mARSession.getViewMatrix();
+                mRootGLTF->cameraPosition = viewMat[3];
 #endif
                 mRootGLTF->update();
             }
