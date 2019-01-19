@@ -39,7 +39,7 @@ struct MiniARApp : public App
 
         mARSession.runConfiguration(config);
 
-        mRootGLTF = RootGLTF::create(getAssetPath(MESH_NAME));
+        mRootGLTF = RootGLTF::create(getAssetPath("new_balance_997/scene.gltf"));
 
         //        createConfigUI({200, 200});
         createConfigImgui();
