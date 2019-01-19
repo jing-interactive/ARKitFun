@@ -98,9 +98,11 @@ struct MiniARApp : public App
                 if (mRootGLTF)
                 {
                     gl::setWireframeEnabled(WIRE_FRAME);
-                    mRootGLTF->currentScene->setTransform(a.mTransform);
-                    //                    mRootGLTF->currentScene->setScale(MESH_SCALE);
-                    //                    mRootGLTF->currentScene->setRotation(mMeshRotation);
+                    MESH_SCALE = 0.01f;
+                    mat4 transform = a.mTransform;
+                    transform *= glm::scale(vec3(MESH_SCALE, MESH_SCALE, MESH_SCALE));
+                    transform *= glm::toMat4(mMeshRotation);
+                    mRootGLTF->currentScene->setTransform(transform);
                     mRootGLTF->draw();
                     if (WIRE_FRAME)
                         gl::disableWireframe();
