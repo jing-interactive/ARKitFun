@@ -54,7 +54,7 @@ struct MiniARApp : public App
         });
 
         getWindow()->getSignalMouseUp().connect([&](MouseEvent& event) {
-            mARSession.addAnchorRelativeToCamera(vec3(0.0f, 0.0f, 0.0f));
+            mARSession.addAnchorRelativeToCamera(vec3(0.0f, 0.0f, -0.5f));
         });
         getWindow()->getSignalKeyUp().connect([&](KeyEvent& event) {
             if (event.getCode() == KeyEvent::KEY_ESCAPE) quit();
@@ -98,10 +98,10 @@ struct MiniARApp : public App
                 if (mRootGLTF)
                 {
                     gl::setWireframeEnabled(WIRE_FRAME);
-                    MESH_SCALE = 0.01f;
+                    MESH_SCALE = 0.001f;
                     mat4 transform = a.mTransform;
                     transform *= glm::scale(vec3(MESH_SCALE, MESH_SCALE, MESH_SCALE));
-                    transform *= glm::toMat4(mMeshRotation);
+//                    transform *= glm::toMat4(mMeshRotation);
                     mRootGLTF->currentScene->setTransform(transform);
                     mRootGLTF->draw();
                     if (WIRE_FRAME)
