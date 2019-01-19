@@ -30,7 +30,7 @@ class MiniARApp : public App
 
       void touchesBegan(TouchEvent event) override
       {
-          mARSession.addAnchorRelativeToCamera(vec3(0.0f, 0.0f, -0.5f));
+          mARSession.addAnchorRelativeToCamera(vec3(0.0f, 0.0f, 0.0f));
       }
 
     void setup() override
@@ -50,7 +50,7 @@ class MiniARApp : public App
 
 //        createConfigUI({200, 200});
         createConfigImgui();
-        gl::enableDepth();
+//        gl::enableDepth();
 
         getWindow()->getSignalResize().connect([&] {
             APP_WIDTH = getWindowWidth();
@@ -77,7 +77,6 @@ class MiniARApp : public App
 
         getWindow()->getSignalDraw().connect([&] {
 
-
             gl::clear(Color(0, 0, 0));
 
             gl::color(1.0f, 1.0f, 1.0f, 1.0f);
@@ -87,30 +86,32 @@ class MiniARApp : public App
             gl::setViewMatrix(mARSession.getViewMatrix());
             gl::setProjectionMatrix(mARSession.getProjectionMatrix());
 
-            gl::ScopedGlslProg glslProg(gl::getStockShader(gl::ShaderDef().color()));
-            gl::ScopedColor colScp;
-            gl::color(1.0f, 1.0f, 1.0f);
-
             for (const auto& a : mARSession.getAnchors())
             {
+#if 0
                 gl::ScopedMatrices matScp;
                 gl::setModelMatrix(a.mTransform);
-#if 0
+                gl::ScopedGlslProg glslProg(am::glslProg("color"));
+                gl::ScopedColor colScp;
+                gl::color(1.0f, 1.0f, 1.0f);
                 gl::drawStrokedCube(vec3(0.0f), vec3(0.02f));
 #else
                 if (mRootGLTF)
                 {
                     gl::setWireframeEnabled(WIRE_FRAME);
-                    mRootGLTF->currentScene->setScale(MESH_SCALE);
-                    mRootGLTF->currentScene->setRotation(mMeshRotation);
+                    mRootGLTF->currentScene->setTransform(a.mTransform);
+//                    mRootGLTF->currentScene->setScale(MESH_SCALE);
+//                    mRootGLTF->currentScene->setRotation(mMeshRotation);
                     mRootGLTF->draw();
-                    gl::disableWireframe();
+                    if (WIRE_FRAME)
+                        gl::disableWireframe();
                 }
 #endif
             }
 
             for (const auto& a : mARSession.getPlaneAnchors())
             {
+                gl::ScopedGlslProg glslProg(am::glslProg("color"));
                 gl::ScopedMatrices matScp;
                 gl::setModelMatrix(a.mTransform);
                 gl::translate(a.mCenter);
@@ -135,6 +136,8 @@ private:
 
 CINDER_APP( MiniARApp, RendererGl, [](App::Settings* settings) {
     readConfig();
+#ifndef CINDER_COCOA_TOUCH
     settings->setWindowSize(APP_WIDTH, APP_HEIGHT);
     settings->setMultiTouchEnabled(false);
+#endif
 } )
